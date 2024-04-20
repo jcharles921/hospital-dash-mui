@@ -4,7 +4,6 @@ import { Box } from "@mui/material";
 import Navigation from "./routes";
 import Loader from "./utils/Loader";
 
-
 function App() {
   return (
     <>

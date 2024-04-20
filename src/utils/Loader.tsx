@@ -8,7 +8,12 @@ interface Props {
 }
 
 const Loader: React.FC<Props> = ({ color, size, marginRight }) => {
-  return <CircularProgress size={size ? size : 20} sx={{ color: color, marginRight:marginRight }} />;
+  return (
+    <CircularProgress
+      size={size ? size : 20}
+      sx={{ color: color, marginRight: marginRight }}
+    />
+  );
 };
 
 export default Loader;

@@ -2,71 +2,58 @@ import * as React from "react";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ListSubheader from "@mui/material/ListSubheader";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PeopleIcon from "@mui/icons-material/People";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import LayersIcon from "@mui/icons-material/Layers";
-import AssignmentIcon from "@mui/icons-material/Assignment";
+import { MdDashboard } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { FaClipboardList, FaBriefcaseMedical } from "react-icons/fa";
+import { IoMdPeople } from "react-icons/io";
+import { FaUserDoctor } from "react-icons/fa6";
+
+const linkStyles = {
+  textDecoration: "none",
+  color: "#147e7e"
+};
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Doctors" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Patients" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Prescriptions" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Users and Roles" />
-    </ListItemButton>
+    <Link to="/" style={linkStyles}>
+      <ListItemButton>
+        <ListItemIcon>
+          <MdDashboard />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItemButton>
+    </Link>
+    <Link to="/doctors" style={linkStyles}>
+      <ListItemButton>
+        <ListItemIcon>
+          <FaUserDoctor />
+        </ListItemIcon>
+        <ListItemText primary="Doctors" />
+      </ListItemButton>
+    </Link>
+    <Link to="/patients" style={linkStyles}>
+      <ListItemButton>
+        <ListItemIcon>
+          <FaBriefcaseMedical />
+        </ListItemIcon>
+        <ListItemText primary="Patients" />
+      </ListItemButton>
+    </Link>
+    <Link to="/prescriptions" style={linkStyles}>
+      <ListItemButton>
+        <ListItemIcon>
+          <FaClipboardList />
+        </ListItemIcon>
+        <ListItemText primary="Prescriptions" />
+      </ListItemButton>
+    </Link>
+    <Link to="/users-roles" style={linkStyles}>
+      <ListItemButton>
+        <ListItemIcon>
+          <IoMdPeople />
+        </ListItemIcon>
+        <ListItemText primary="Users and Roles" />
+      </ListItemButton>
+    </Link>
   </React.Fragment>
 );
-
-// export const secondaryListItems = (
-//   <React.Fragment>
-//     <ListSubheader component="div" inset>
-//       Saved reports
-//     </ListSubheader>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Current month" />
-//     </ListItemButton>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Last quarter" />
-//     </ListItemButton>
-//     <ListItemButton>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Year-end sale" />
-//     </ListItemButton>
-//   </React.Fragment>
-// );
