@@ -20,7 +20,7 @@ export default function PatientChart() {
   const theme = useTheme();
   const [selectedMonth, setSelectedMonth] = useState(1); // Default to January
 
-  const handleMonthChange = (event) => {
+  const handleMonthChange = (event:any) => {
     setSelectedMonth(event.target.value);
   };
 
