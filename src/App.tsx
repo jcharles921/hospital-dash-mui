@@ -16,7 +16,7 @@ function App() {
             width="100wh"
             height="100vh"
           >
-            <Loader color="#000000" size={50} />
+            <Loader color="#147e7e" size={50} />
           </Box>
         }
       >

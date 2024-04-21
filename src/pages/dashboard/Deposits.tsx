@@ -10,16 +10,16 @@ function preventDefault(event: React.MouseEvent) {
 export default function Deposits() {
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
-      <Typography component="p" variant="h4">
-        $3,024.00
+      <Title component="h2">Recent Deposits</Title>
+      <Typography component="p" variant="h5">
+        40,000 RWF
       </Typography>
       <Typography color="text.secondary" sx={{ flex: 1 }}>
-        on 15 March, 2019
+        on 21 April, 2024
       </Typography>
       <div>
         <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
+          See history
         </Link>
       </div>
     </React.Fragment>

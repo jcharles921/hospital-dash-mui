@@ -1,36 +1,60 @@
 import * as React from "react";
+import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { LineChart, axisClasses } from "@mui/x-charts";
 import { ChartsTextStyle } from "@mui/x-charts/ChartsText";
 import Title from "./Title";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
-// Generate Sales Data
-function createData(
-  time: string,
-  amount?: number,
-): { time: string; amount: number | null } {
-  return { time, amount: amount ?? null };
+// Generate Patient Visits Data with some variation for a specific month
+function generateMonthlyData(month: number): { day: string; visits: number }[] {
+  const daysInMonth = new Date(2024, month, 0).getDate(); // Get the number of days in the selected month
+  return Array.from({ length: daysInMonth }, (_, index) => ({
+    day: (index + 1).toString(),
+    visits: Math.floor(Math.random() * 50) + 100, // Random visits between 100 to 150 for each day
+  }));
 }
 
-const data = [
-  createData("00:00", 0),
-  createData("03:00", 300),
-  createData("06:00", 600),
-  createData("09:00", 800),
-  createData("12:00", 1500),
-  createData("15:00", 2000),
-  createData("18:00", 2400),
-  createData("21:00", 2400),
-  createData("24:00"),
-];
-
-export default function Chart() {
+export default function PatientChart() {
   const theme = useTheme();
+  const [selectedMonth, setSelectedMonth] = useState(1); // Default to January
+
+  const handleMonthChange = (event) => {
+    setSelectedMonth(event.target.value);
+  };
+
+  const data = generateMonthlyData(selectedMonth);
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
-      <div style={{ width: "100%", flexGrow: 1, overflow: "hidden" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginBottom: "10px",
+          justifyContent: "space-between",
+        }}
+      >
+        <Title>Patient Visits Over a Month</Title>
+        <div style={{ marginLeft: "10px", alignSelf: "flex-end" }}>
+          Select Month:
+          <Select
+            value={selectedMonth}
+            onChange={handleMonthChange}
+            style={{ marginLeft: "10px" }}
+          >
+            {Array.from({ length: 12 }, (_, index) => (
+              <MenuItem key={index + 1} value={index + 1}>
+                {new Date(2024, index, 1).toLocaleDateString("en-US", {
+                  month: "long",
+                })}
+              </MenuItem>
+            ))}
+          </Select>
+        </div>
+      </div>
+      <div style={{ width: "100%", flexGrow: 1, overflow: "auto" }}>
         <LineChart
           dataset={data}
           margin={{
@@ -42,26 +66,25 @@ export default function Chart() {
           xAxis={[
             {
               scaleType: "point",
-              dataKey: "time",
-              tickNumber: 2,
+              dataKey: "day",
+              tickNumber: 7, // Show ticks for each week
               tickLabelStyle: theme.typography.body2 as ChartsTextStyle,
             },
           ]}
           yAxis={[
             {
-              label: "Sales ($)",
+              label: "Number of Patients",
               labelStyle: {
                 ...(theme.typography.body1 as ChartsTextStyle),
                 fill: theme.palette.text.primary,
               },
               tickLabelStyle: theme.typography.body2 as ChartsTextStyle,
-              max: 2500,
-              tickNumber: 3,
+              tickNumber: 6, // Show 6 ticks
             },
           ]}
           series={[
             {
-              dataKey: "amount",
+              dataKey: "visits",
               showMark: false,
               color: theme.palette.primary.light,
             },

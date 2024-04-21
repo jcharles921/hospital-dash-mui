@@ -8,6 +8,7 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import Balance from "./Balance";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
 import Container from "@mui/material/Container";
@@ -20,8 +21,9 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems } from "./listItems";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
-import Orders from "./Orders";
+import Transactions from "./Transactions";
 import { theme } from "../../main";
+import { Logo } from "../assets/images";
 
 function Copyright(props: any) {
   return (
@@ -142,16 +144,30 @@ export default function Dashboard() {
             sx={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
-              px: [1],
+              paddingTop: "20px",
+              // paddingBottom: "20px",
+              justifyContent: "space-between",
             }}
           >
-            {/* <img src={}/> */}
-            <IconButton onClick={toggleDrawer}>
+            <img
+              style={{
+                position: "relative",
+                right: "-60px",
+                width: "60px",
+              }}
+              src={Logo}
+            />
+            <IconButton
+              sx={{
+                position: "relative",
+                top: "-16px",
+              }}
+              onClick={toggleDrawer}
+            >
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
-          <Divider />
+
           <List component="nav">
             {mainListItems}
             {/* <Divider sx={{ my: 1 }} /> */}
@@ -180,7 +196,7 @@ export default function Dashboard() {
                     p: 2,
                     display: "flex",
                     flexDirection: "column",
-                    height: 240,
+                    height: 300,
                   }}
                 >
                   <Chart />
@@ -192,8 +208,23 @@ export default function Dashboard() {
                   sx={{
                     p: 2,
                     display: "flex",
+                    marginBottom: "10px",
                     flexDirection: "column",
-                    height: 240,
+                    height: 130,
+                  }}
+                >
+                  <Balance
+                    balance={"40,569,320"}
+                    color="green"
+                    percentage={5}
+                  />
+                </Paper>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                    height: 150,
                   }}
                 >
                   <Deposits />
@@ -202,7 +233,7 @@ export default function Dashboard() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-                  <Orders />
+                  <Transactions />
                 </Paper>
               </Grid>
             </Grid>

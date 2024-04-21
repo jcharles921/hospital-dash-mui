@@ -18,7 +18,10 @@ export const mainListItems = (
     <Link to="/" style={linkStyles}>
       <ListItemButton>
         <ListItemIcon>
-          <MdDashboard />
+          <MdDashboard style={{
+              position: "relative",
+              left: "10px",}}
+              />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItemButton>
@@ -26,7 +29,9 @@ export const mainListItems = (
     <Link to="/doctors" style={linkStyles}>
       <ListItemButton>
         <ListItemIcon>
-          <FaUserDoctor />
+          <FaUserDoctor style={{
+              position: "relative",
+              left: "10px",}} />
         </ListItemIcon>
         <ListItemText primary="Doctors" />
       </ListItemButton>
@@ -34,7 +39,9 @@ export const mainListItems = (
     <Link to="/patients" style={linkStyles}>
       <ListItemButton>
         <ListItemIcon>
-          <FaBriefcaseMedical />
+          <FaBriefcaseMedical style={{
+              position: "relative",
+              left: "10px",}} />
         </ListItemIcon>
         <ListItemText primary="Patients" />
       </ListItemButton>
@@ -42,7 +49,9 @@ export const mainListItems = (
     <Link to="/prescriptions" style={linkStyles}>
       <ListItemButton>
         <ListItemIcon>
-          <FaClipboardList />
+          <FaClipboardList style={{
+              position: "relative",
+              left: "10px",}} />
         </ListItemIcon>
         <ListItemText primary="Prescriptions" />
       </ListItemButton>
@@ -50,7 +59,9 @@ export const mainListItems = (
     <Link to="/users-roles" style={linkStyles}>
       <ListItemButton>
         <ListItemIcon>
-          <IoMdPeople />
+          <IoMdPeople style={{
+              position: "relative",
+              left: "10px",}} />
         </ListItemIcon>
         <ListItemText primary="Users and Roles" />
       </ListItemButton>

@@ -16,6 +16,7 @@ const Navigation = () => {
         <Route path="/" element={<Navigate to="/home" />} />
 
         <Route path="/home" element={<Dashboard />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
