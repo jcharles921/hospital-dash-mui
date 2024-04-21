@@ -7,7 +7,7 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
+// import Divider from "@mui/material/Divider";
 import Balance from "./Balance";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
@@ -24,6 +24,7 @@ import Deposits from "./Deposits";
 import Transactions from "./Transactions";
 import { theme } from "../../main";
 import { Logo } from "../assets/images";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 function Copyright(props: any) {
   return (
@@ -35,7 +36,7 @@ function Copyright(props: any) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        CHUK CENTERE HOSPITALIERE DE KIGALI
+        CHUK CENTRE HOSPITALIÈRE DE KIGALI
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -136,6 +137,17 @@ export default function Dashboard() {
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
+              <Badge
+                sx={{
+                  marginLeft: "20px",
+                }}
+                color="secondary"
+                onClick={() => {
+                  window.location.href = "/login";
+                }}
+              >
+                <LogoutIcon />
+              </Badge>
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -190,25 +202,34 @@ export default function Dashboard() {
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <Grid container spacing={3}>
               {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
+              <Grid item xs={12} md={8} lg={8}>
                 <Paper
                   sx={{
                     p: 2,
                     display: "flex",
                     flexDirection: "column",
-                    height: 300,
+                    height: 370,
                   }}
                 >
                   <Chart />
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
+              <Grid item xs={12} md={4} lg={4}>
+                <Paper
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: 230,
+                  }}
+                >
+                  <Deposits />
+                </Paper>
                 <Paper
                   sx={{
                     p: 2,
                     display: "flex",
-                    marginBottom: "10px",
+                    marginTop: "10px",
                     flexDirection: "column",
                     height: 130,
                   }}
@@ -218,16 +239,6 @@ export default function Dashboard() {
                     color="green"
                     percentage={5}
                   />
-                </Paper>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    height: 150,
-                  }}
-                >
-                  <Deposits />
                 </Paper>
               </Grid>
               {/* Recent Orders */}
